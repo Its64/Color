@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnjhqqmhqb15i"]
+[gd_scene load_steps=14 format=3 uid="uid://dnjhqqmhqb15i"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_oegmi"]
 [ext_resource type="Texture2D" uid="uid://bma86gn45xto3" path="res://maxpixel/final.png" id="2_klbj8"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cjexaomv1h7wd" path="res://Scenes/Player.tscn" id="3_b0xow"]
 [ext_resource type="PackedScene" uid="uid://cc07acmftajbs" path="res://Scenes/Finish.tscn" id="4_6hpeo"]
 [ext_resource type="PackedScene" uid="uid://cbugtq8c1sj6a" path="res://Scenes/Timer.tscn" id="6_kxbam"]
+[ext_resource type="FontFile" uid="uid://cgghk1e3nv3xt" path="res://maxpixel/fonts/QuinqueFive.otf" id="7_mqbwu"]
+[ext_resource type="Script" path="res://Scripts/Label.gd" id="8_iq5up"]
+[ext_resource type="PackedScene" uid="uid://r6m6ip4colpl" path="res://Scenes/Levels.tscn" id="9_akne8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dqxf"]
 texture = ExtResource("2_klbj8")
@@ -63,6 +66,12 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_wu66r")
 sources/0 = SubResource("TileSetAtlasSource_8dqxf")
 
+[sub_resource type="LabelSettings" id="LabelSettings_53cjw"]
+font = ExtResource("7_mqbwu")
+font_size = 5
+font_color = Color(0, 0, 0, 1)
+shadow_size = 29
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_oegmi")
 
@@ -94,6 +103,28 @@ wait_time = 0.1
 position = Vector2(52, 4)
 
 [node name="Timer3" parent="." instance=ExtResource("6_kxbam")]
+wait_time = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = -71.0
+offset_top = -40.0
+offset_right = 7.0
+offset_bottom = -30.0
+text = "10"
+label_settings = SubResource("LabelSettings_53cjw")
+script = ExtResource("8_iq5up")
+metadata/_edit_use_anchors_ = true
+
+[node name="Levels" parent="CanvasLayer" instance=ExtResource("9_akne8")]
+offset_left = 54.0
+offset_top = -40.0
+offset_right = 72.0
+offset_bottom = -30.0
+text = "1/5"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
