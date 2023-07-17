@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlgkj4jt7f0dx"]
+[gd_scene load_steps=10 format=3 uid="uid://dlgkj4jt7f0dx"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_j88no"]
 [ext_resource type="Texture2D" uid="uid://bpvirmhbd68af" path="res://maxpixel/tileset.png" id="2_ajhh3"]
 [ext_resource type="Texture2D" uid="uid://bma86gn45xto3" path="res://maxpixel/final.png" id="2_dchex"]
 [ext_resource type="PackedScene" uid="uid://cjexaomv1h7wd" path="res://Scenes/Player.tscn" id="3_4icw2"]
 [ext_resource type="PackedScene" uid="uid://cc07acmftajbs" path="res://Scenes/Finish.tscn" id="4_pcek5"]
+[ext_resource type="PackedScene" uid="uid://cbugtq8c1sj6a" path="res://Scenes/Timer.tscn" id="6_qw6i0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ai7iy"]
 texture = ExtResource("2_dchex")
@@ -91,6 +92,8 @@ wait_time = 0.1
 
 [node name="Finish" parent="." instance=ExtResource("4_pcek5")]
 position = Vector2(60, 28)
+
+[node name="Timer3" parent="." instance=ExtResource("6_qw6i0")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

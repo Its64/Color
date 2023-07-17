@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbugtq8c1sj6a"]
+
+[ext_resource type="Script" path="res://Scripts/Timer.gd" id="1_tywcu"]
+
+[node name="Timer" type="Timer"]
+wait_time = 10.0
+autostart = true
+script = ExtResource("1_tywcu")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]
