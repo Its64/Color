@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	pass
+	Global.current_level = 1
 
 func _process(delta):
 	pass
